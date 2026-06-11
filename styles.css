@@ -1,17 +1,13 @@
 :root {
-    /* Paleta de colores "Pizzería Moderna" */
-    --bg-color: #faf7f2;       /* Fondo crema muy suave y cálido */
-    --text-main: #3d332d;      /* Marrón muy oscuro, casi negro, para el texto principal */
-    --text-muted: #85756e;     /* Gris cálido para las descripciones */
-    --border-color: #e3d9cf;   /* Beige para las líneas divisorias */
-    --accent-color: #d64c31;   /* Rojo tomate para destacar (precios, títulos) */
-    --accent-light: #fcedea;   /* Fondo rojizo muy claro para la caja de notas */
+    --bg-color: #faf7f2;
+    --text-main: #3d332d;
+    --text-muted: #85756e;
+    --border-color: #e3d9cf;
+    --accent-color: #d64c31;
+    --accent-light: #fcedea;
     --max-width: 900px;
 }
 
-/* =========================================
-   1. ESTILOS BASE (MÓVIL)
-   ========================================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -32,7 +28,6 @@ body {
     margin: 0 auto;
 }
 
-/* Header */
 header {
     text-align: center;
     margin-bottom: 50px;
@@ -55,7 +50,6 @@ header p {
     text-transform: uppercase;
 }
 
-/* Nota informativa destacada con color */
 .menu-note {
     font-size: 0.85rem;
     color: var(--text-main);
@@ -76,7 +70,6 @@ header p {
     font-size: 0.8rem;
 }
 
-/* Secciones */
 .menu-section {
     margin-bottom: 50px;
 }
@@ -93,7 +86,6 @@ header p {
     display: inline-block;
 }
 
-/* Grid de items */
 .menu-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -122,7 +114,6 @@ header p {
     margin-bottom: -6px; 
 }
 
-/* Precios en color de acento */
 .item-price {
     font-size: 1rem;
     font-weight: 600;
@@ -140,7 +131,6 @@ header p {
     margin-top: 6px;
 }
 
-/* Footer */
 footer {
     text-align: center;
     margin-top: 80px;
@@ -154,11 +144,6 @@ footer p {
     margin-bottom: 5px;
 }
 
-/* =========================================
-   2. MEDIA QUERIES (ESCALADO HACIA ARRIBA)
-   ========================================= */
-
-/* Tablets (a partir de 768px de ancho) */
 @media (min-width: 768px) {
     body {
         padding: 60px 30px;
@@ -181,7 +166,6 @@ footer p {
     }
 }
 
-/* Escritorio (a partir de 1024px de ancho) */
 @media (min-width: 1024px) {
     body {
         padding: 80px 40px;
