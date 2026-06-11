@@ -98,20 +98,25 @@ header p {
 }
 
 .item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: end;
   margin-bottom: 4px;
-  border-bottom: 2px dotted var(--border-color);
-  padding-bottom: 4px;
 }
 
 .item-name {
   font-size: 1rem;
   font-weight: 600;
-  padding-right: 10px;
-  background-color: var(--bg-color);
-  margin-bottom: -6px;
+  overflow: hidden;
+}
+
+.item-name::after {
+  content: "";
+  display: inline-block;
+  width: 100vw;
+  margin-right: -100vw;
+  border-bottom: 2px dotted var(--border-color);
+  margin-left: 5px;
 }
 
 .item-price {
@@ -119,9 +124,7 @@ header p {
   font-weight: 600;
   color: var(--accent-color);
   white-space: nowrap;
-  background-color: var(--bg-color);
-  margin-bottom: -6px;
-  padding-left: 5px;
+  padding-left: 6px;
 }
 
 .item-description {
@@ -129,6 +132,14 @@ header p {
   color: var(--text-muted);
   font-weight: 400;
   margin-top: 6px;
+}
+
+.combo-number {
+  font-weight: 700;
+  background-color: var(--accent-light);
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid var(--border-color);
 }
 
 footer {
@@ -203,6 +214,7 @@ footer p {
   gap: 4px;
   margin-left: 8px;
   margin-bottom: -4px;
+  white-space: nowrap;
 }
 
 .leyenda-alergenos {
@@ -214,4 +226,12 @@ footer p {
   border-top: 1px dashed var(--accent-color);
   font-size: 0.8rem;
   color: var(--text-main);
+}
+
+.leyenda-alergenos span {
+  white-space: nowrap;
+}
+
+.alergeno-icon {
+  display: inline-block;
 }
