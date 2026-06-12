@@ -1,10 +1,11 @@
 :root {
-  --bg-color: #faf7f2;
-  --text-main: #3d332d;
-  --text-muted: #85756e;
-  --border-color: #e3d9cf;
-  --accent-color: #d64c31;
-  --accent-light: #fcedea;
+  --bg-color: #fdfaf4;
+  --text-main: #2b231f;
+  --text-muted: #73635a;
+  --border-color: #e8dcd0;
+  --accent-color: #c93a22;
+  --accent-secondary: #356843;
+  --accent-light: #faecea;
   --max-width: 900px;
 }
 
@@ -34,19 +35,21 @@ header {
 }
 
 header h1 {
-  font-size: 1.6rem;
+  font-family: "Lora", serif;
+  font-size: 2.5rem;
   font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   color: var(--accent-color);
+  letter-spacing: 0px;
+  text-transform: none;
   margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 header p {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
@@ -75,11 +78,11 @@ header p {
 }
 
 .section-title {
-  font-size: 1.15rem;
+  font-family: "Lora", serif;
+  font-size: 1.4rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: var(--text-main);
+  text-transform: none;
+  color: var(--accent-secondary);
   margin-bottom: 25px;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--accent-color);
@@ -95,6 +98,17 @@ header p {
 .menu-item {
   display: flex;
   flex-direction: column;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.menu-item:hover {
+  background-color: #ffffff;
+  border-color: var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
 }
 
 .item-header {
@@ -136,10 +150,13 @@ header p {
 
 .combo-number {
   font-weight: 700;
-  background-color: var(--accent-light);
+  background-color: var(--accent-color);
+  color: white;
+  padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.9em;
-  border: 1px solid var(--border-color);
+  font-size: 0.85em;
+  border: none;
+  margin-right: 5px;
 }
 
 footer {
@@ -211,10 +228,21 @@ footer p {
 .alergenos {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  width: fit-content;
+}
+
+.alergenos-trazas {
+  display: inline-flex;
   gap: 4px;
-  margin-left: 8px;
-  margin-bottom: -4px;
-  white-space: nowrap;
+  margin-left: 4px;
 }
 
 .leyenda-alergenos {
