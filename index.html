@@ -1,637 +1,747 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pizzeria Vila de Càlig - Carta Digital</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero-header">
+      <div class="hero-overlay">
+        <h1>Pizzeria Vila de Càlig</h1>
+        <p>La Nostra Carta</p>
+      </div>
+    </header>
 
     <div class="container">
-        <header>
-            <h1>Pizzeria Vila de Càlig</h1>
-            <p>Carta</p>
-        </header>
+      <div class="menu-note top-note">
+        <p id="plato117996">IVA incluido en los precios.</p>
+        <p id="plato548598">
+          Información adicional de alérgenos preguntar al personal.
+        </p>
+
+        <div class="leyenda-alergenos">
+          <span><span class="alergeno-icon">🌾</span> Gluten</span>
+          <span><span class="alergeno-icon">🥛</span> Lácteos</span>
+          <span><span class="alergeno-icon">🦐</span> Crustáceos</span>
+          <span><span class="alergeno-icon">🐟</span> Pescado</span>
+          <span><span class="alergeno-icon">🌱</span> Soja</span>
+        </div>
+      </div>
+
+      <section class="menu-section">
+        <h2 class="section-title">Entrantes</h2>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato109313">
+            <div class="item-header">
+              <span class="item-name">Chipirones rebozados</span>
+              <span class="item-price">9,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109310">
+            <div class="item-header">
+              <span class="item-name">Croquetas de jamón y cocido (8u)</span>
+              <span class="item-price">9,00€</span>
+            </div>
+            <div class="alergenos">
+              <span title="Contiene Gluten">🌾</span>
+              <span title="Contiene Soja">🌱</span>
+              <span title="Contiene Lácteos">🥛</span>
+            </div>
+            <div class="item-description">
+              Puede contener trazas de Crustáceos, Pescado.
+              <div class="alergenos-trazas">
+                <span title="Trazas de Crustáceos">🦐</span
+                ><span title="Trazas de Pescado">🐟</span>
+              </div>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109312">
+            <div class="item-header">
+              <span class="item-name">Huevos rotos con bacon</span>
+              <span class="item-price">8,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109314">
+            <div class="item-header">
+              <span class="item-name">Calamares</span>
+              <span class="item-price">9,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109319">
+            <div class="item-header">
+              <span class="item-name">Sepia rebozada</span>
+              <span class="item-price">8,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109315">
+            <div class="item-header">
+              <span class="item-name">Patatas de miel y mostaza</span>
+              <span class="item-price">7,50€</span>
+            </div>
+            <div class="item-description">
+              Patatas con salsa de miel, mostaza; salsa de cheddar y bacon.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109316">
+            <div class="item-header">
+              <span class="item-name">Patatas bravas</span>
+              <span class="item-price">6,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109320">
+            <div class="item-header">
+              <span class="item-name">Tabla de jamón y queso</span>
+              <span class="item-price">12,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109321">
+            <div class="item-header">
+              <span class="item-name">Ración de pan con tomate y alioli</span>
+              <span class="item-price">4,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109322">
+            <div class="item-header">
+              <span class="item-name">Tosta de escalivada y anchoas</span>
+              <span class="item-price">6,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato263548">
+            <div class="item-header">
+              <span class="item-name">Sticks de mozzarella (8u)</span>
+              <span class="item-price">8,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109323">
+            <div class="item-header">
+              <span class="item-name">Mix de quesos rebozados (8u)</span>
+              <span class="item-price">9,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109325">
+            <div class="item-header">
+              <span class="item-name">Pollo Rooster</span>
+              <span class="item-price">8,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato311593">
+            <div class="item-header">
+              <span class="item-name">Aros de cebolla a la cerveza</span>
+              <span class="item-price">8,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato112045">
+            <div class="item-header">
+              <span class="item-name">Ración de pan</span>
+              <span class="item-price">2,00€</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h2 class="section-title">Ensaladas</h2>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato109326">
+            <div class="item-header">
+              <span class="item-name">Atún</span>
+              <span class="item-price">10,00€</span>
+            </div>
+            <div class="item-description">
+              Lechuga variada, tomate, cebolla, atún y aceitunas.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109328">
+            <div class="item-header">
+              <span class="item-name">César</span>
+              <span class="item-price">10,00€</span>
+            </div>
+            <div class="item-description">
+              Lechuga variada, tomates cherry, picatostes, pollo, queso
+              parmesano y salsa César.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109329">
+            <div class="item-header">
+              <span class="item-name">Clásica</span>
+              <span class="item-price">8,50€</span>
+            </div>
+            <div class="item-description">
+              Lechuga variada, tomate, pimiento rojo y verde, aceitunas y
+              cebolla.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109330">
+            <div class="item-header">
+              <span class="item-name">De la casa</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Lechuga variada, tomates cherry, pasas, pipas, foie, picatostes,
+              jamón serrano y vinagreta.
+            </div>
+          </div>
+          <div class="menu-item" id="plato165215">
+            <div class="item-header">
+              <span class="item-name">Templada</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Lechuga variada, tomate, picatostes, crema de balsámico, daditos
+              de bacon y queso rulo.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h2 class="section-title">Platos combinados</h2>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato109332">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N1)</span> Entrecot con
+                guarnición</span
+              >
+              <span class="item-price">17,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109333">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N2)</span> Escalope de pollo, huevo
+                y patatas fritas</span
+              >
+              <span class="item-price">10,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109334">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N3)</span> Muslo de pollo con
+                patatas fritas</span
+              >
+              <span class="item-price">10,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109335">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N4)</span> Sepia, gambas, calamares
+                y patatas fritas</span
+              >
+              <span class="item-price">17,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109336">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N5)</span> Presa de cerdo con
+                guarnición</span
+              >
+              <span class="item-price">18,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109337">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N6)</span> Solomillo de ternera con
+                guarnición</span
+              >
+              <span class="item-price">21,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109338">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N7)</span> Costillar a la barbacoa
+                con patatas fritas</span
+              >
+              <span class="item-price">16,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109339">
+            <div class="item-header">
+              <span class="item-name"
+                ><span class="combo-number">(N8)</span> Medio conejo a la brasa
+                con guarnición</span
+              >
+              <span class="item-price">14,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato545700">
+            <div class="item-header">
+              <span class="item-name">Pulpo a la brasa</span>
+              <span class="item-price">19,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato263555">
+            <div class="item-header">
+              <span class="item-name">Bacalao frito con guarnición</span>
+              <span class="item-price">19,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109341">
+            <div class="item-header">
+              <span class="item-name">Burguer de Black Angus (220g)</span>
+              <span class="item-price">11,00€</span>
+            </div>
+            <div class="item-description">
+              Pan mollete, jardinera, bacon, queso cheddar y patatas fritas.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109342">
+            <div class="item-header">
+              <span class="item-name">Burguer de pollo rebozado</span>
+              <span class="item-price">11,00€</span>
+            </div>
+            <div class="item-description">
+              Pan mollete, jardinera, queso Edam, huevo y patatas fritas.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109344">
+            <div class="item-header">
+              <span class="item-name">Sándwich vegetal</span>
+              <span class="item-price">6,50€</span>
+            </div>
+            <div class="item-description">
+              Jardinera, atún, mayonesa y aceitunas.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109345">
+            <div class="item-header">
+              <span class="item-name">Sándwich XL</span>
+              <span class="item-price">7,50€</span>
+            </div>
+            <div class="item-description">
+              Jardinera, bacon, queso Edam, huevo y salsa César.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109346">
+            <div class="item-header">
+              <span class="item-name"
+                >Planchado de cebolla caramelizada, jamón serrano y queso
+                rulo</span
+              >
+              <span class="item-price">7,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109347">
+            <div class="item-header">
+              <span class="item-name">Planchado de jamón y queso</span>
+              <span class="item-price">5,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato165216">
+            <div class="item-header">
+              <span class="item-name">Pulled pork</span>
+              <span class="item-price">9,50€</span>
+            </div>
+            <div class="item-description">
+              Pan mollete, carne deshilachada a la bbq, salsa de queso cheddar,
+              cebolla frita y patatas fritas.
+            </div>
+          </div>
+          <div class="menu-item" id="plato112044">
+            <div class="item-header">
+              <span class="item-name">Salsas extra</span>
+              <span class="item-price">2,00€</span>
+            </div>
+            <div class="item-description">Roquefort o pimienta.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h2 class="section-title">Pizzas</h2>
 
         <div class="menu-note">
-            <p id="plato117996">IVA incluido en los precios.</p>
-            <p id="plato548598">Información adicional de alérgenos preguntar al camarero/a.</p>
-            
-            <div class="leyenda-alergenos">
-                <span>(<span class="alergeno-icon">🌾</span> Gluten)</span>
-                <span>(<span class="alergeno-icon">🥛</span> Lácteos)</span>
-                <span>(<span class="alergeno-icon">🦐</span> Crustáceos)</span>
-                <span>(<span class="alergeno-icon">🐟</span> Pescado)</span>
-                <span>(<span class="alergeno-icon">🌱</span> Soja)</span>
-            </div>
+          <p>
+            Todas nuestras pizzas se elaboran con base de tomate, mozzarella y
+            especias.
+            <span class="alergenos inline-alergenos">
+              <span title="Contiene Gluten">🌾</span>
+              <span title="Contiene Lácteos">🥛</span>
+            </span>
+          </p>
+          <div class="suplementos">
+            <span id="plato407858"
+              >Masa sin gluten: <strong>+2,00€</strong></span
+            >
+            <span class="separator">|</span>
+            <span id="plato112046"
+              >Suplemento ingrediente: <strong>+1,20€</strong></span
+            >
+            <span class="separator">|</span>
+            <span id="plato112047"
+              >Suplemento Foie / Anchoas: <strong>+2,00€</strong></span
+            >
+          </div>
         </div>
 
-        <section class="menu-section">
-            <h2 class="section-title">Entrantes</h2>
-            <div class="menu-grid">
-                <div class="menu-item" id="plato109313">
-                    <div class="item-header">
-                        <span class="item-name">Chipirones rebozados</span>
-                        <span class="item-price">9,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109310">
-                    <div class="item-header">
-                        <span class="item-name">Croquetas de jamón y cocido (8u)</span>
-                        <span class="item-price">9,00€</span>
-                    </div>
-                    <div class="alergenos">
-                        <span title="Contiene Gluten">🌾</span>
-                        <span title="Contiene Soja">🌱</span>
-                        <span title="Contiene Lácteos">🥛</span>
-                    </div>
-                    <div class="item-description">Puede contener trazas de Crustáceos, Pescado. <div class="alergenos-trazas"><span title="Trazas de Crustáceos">🦐</span><span title="Trazas de Pescado">🐟</span></div></div>
-                </div>
-                <div class="menu-item" id="plato109312">
-                    <div class="item-header">
-                        <span class="item-name">Huevos rotos con bacon</span>
-                        <span class="item-price">8,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109314">
-                    <div class="item-header">
-                        <span class="item-name">Calamares</span>
-                        <span class="item-price">9,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109319">
-                    <div class="item-header">
-                        <span class="item-name">Sepia rebozada</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109315">
-                    <div class="item-header">
-                        <span class="item-name">Patatas de miel y mostaza</span>
-                        <span class="item-price">7,50€</span>
-                    </div>
-                    <div class="item-description">Patatas con salsa de miel, mostaza; salsa de cheddar y bacon.</div>
-                </div>
-                <div class="menu-item" id="plato109316">
-                    <div class="item-header">
-                        <span class="item-name">Patatas bravas</span>
-                        <span class="item-price">6,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109320">
-                    <div class="item-header">
-                        <span class="item-name">Tabla de jamón y queso</span>
-                        <span class="item-price">12,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109321">
-                    <div class="item-header">
-                        <span class="item-name">Ración de pan con tomate y alioli</span>
-                        <span class="item-price">4,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109322">
-                    <div class="item-header">
-                        <span class="item-name">Tosta de escalivada y anchoas</span>
-                        <span class="item-price">6,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato263548">
-                    <div class="item-header">
-                        <span class="item-name">Sticks de mozzarella (8u)</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109323">
-                    <div class="item-header">
-                        <span class="item-name">Mix de quesos rebozados (8u)</span>
-                        <span class="item-price">9,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109325">
-                    <div class="item-header">
-                        <span class="item-name">Pollo Rooster</span>
-                        <span class="item-price">8,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato311593">
-                    <div class="item-header">
-                        <span class="item-name">Aros de cebolla a la cerveza</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato112045">
-                    <div class="item-header">
-                        <span class="item-name">Ración de pan</span>
-                        <span class="item-price">2,00€</span>
-                    </div>
-                </div>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato311594">
+            <div class="item-header">
+              <span class="item-name">Pan pizza</span>
+              <span class="item-price">4,50€</span>
             </div>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="section-title">Ensaladas</h2>
-            <div class="menu-grid">
-                <div class="menu-item" id="plato109326">
-                    <div class="item-header">
-                        <span class="item-name">Atún</span>
-                        <span class="item-price">10,00€</span>
-                    </div>
-                    <div class="item-description">Lechuga variada, tomate, cebolla, atún y aceitunas.</div>
-                </div>
-                <div class="menu-item" id="plato109328">
-                    <div class="item-header">
-                        <span class="item-name">César</span>
-                        <span class="item-price">10,00€</span>
-                    </div>
-                    <div class="item-description">Lechuga variada, tomates cherry, picatostes, pollo, queso parmesano y salsa César.</div>
-                </div>
-                <div class="menu-item" id="plato109329">
-                    <div class="item-header">
-                        <span class="item-name">Clásica</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                    <div class="item-description">Lechuga variada, tomate, pimiento rojo y verde, aceitunas y cebolla.</div>
-                </div>
-                <div class="menu-item" id="plato109330">
-                    <div class="item-header">
-                        <span class="item-name">De la casa</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Lechuga variada, tomates cherry, pasas, pipas, foie, picatostes, jamón serrano y vinagreta.</div>
-                </div>
-                <div class="menu-item" id="plato165215">
-                    <div class="item-header">
-                        <span class="item-name">Templada</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Lechuga variada, tomate, picatostes, crema de balsámico, daditos de bacon y queso rulo.</div>
-                </div>
+          </div>
+          <div class="menu-item" id="plato545702">
+            <div class="item-header">
+              <span class="item-name">Blanca</span>
+              <span class="item-price">11,00€</span>
             </div>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="section-title">Platos combinados</h2>
-            <div class="menu-grid">
-                <div class="menu-item" id="plato109332">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N1)</span> Entrecot con guarnición</span>
-                        <span class="item-price">17,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109333">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N2)</span> Escalope de pollo, huevo y patatas fritas</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109334">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N3)</span> Muslo de pollo con patatas fritas</span>
-                        <span class="item-price">10,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109335">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N4)</span> Sepia, gambas, calamares y patatas fritas</span>
-                        <span class="item-price">17,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109336">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N5)</span> Presa de cerdo con guarnición</span>
-                        <span class="item-price">18,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109337">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N6)</span> Solomillo de ternera con guarnición</span>
-                        <span class="item-price">21,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109338">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N7)</span> Costillar a la barbacoa con patatas fritas</span>
-                        <span class="item-price">16,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109339">
-                    <div class="item-header">
-                        <span class="item-name"><span class="combo-number">(N8)</span> Medio conejo a la brasa con guarnición</span>
-                        <span class="item-price">14,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato545700">
-                    <div class="item-header">
-                        <span class="item-name">Pulpo a la brasa</span>
-                        <span class="item-price">19,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato263555">
-                    <div class="item-header">
-                        <span class="item-name">Bacalao frito con guarnición</span>
-                        <span class="item-price">19,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109341">
-                    <div class="item-header">
-                        <span class="item-name">Burguer de Black Angus (220g)</span>
-                        <span class="item-price">11,00€</span>
-                    </div>
-                    <div class="item-description">Pan mollete, jardinera, bacon, queso cheddar y patatas fritas.</div>
-                </div>
-                <div class="menu-item" id="plato109342">
-                    <div class="item-header">
-                        <span class="item-name">Burguer de pollo rebozado</span>
-                        <span class="item-price">11,00€</span>
-                    </div>
-                    <div class="item-description">Pan mollete, jardinera, queso Edam, huevo y patatas fritas.</div>
-                </div>
-                <div class="menu-item" id="plato109344">
-                    <div class="item-header">
-                        <span class="item-name">Sándwich vegetal</span>
-                        <span class="item-price">6,50€</span>
-                    </div>
-                    <div class="item-description">Jardinera, atún, mayonesa y aceitunas.</div>
-                </div>
-                <div class="menu-item" id="plato109345">
-                    <div class="item-header">
-                        <span class="item-name">Sándwich XL</span>
-                        <span class="item-price">7,50€</span>
-                    </div>
-                    <div class="item-description">Jardinera, bacon, queso Edam, huevo y salsa César.</div>
-                </div>
-                <div class="menu-item" id="plato109346">
-                    <div class="item-header">
-                        <span class="item-name">Planchado de cebolla caramelizada, jamón serrano y queso rulo</span>
-                        <span class="item-price">7,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109347">
-                    <div class="item-header">
-                        <span class="item-name">Planchado de jamón y queso</span>
-                        <span class="item-price">5,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato165216">
-                    <div class="item-header">
-                        <span class="item-name">Pulled pork</span>
-                        <span class="item-price">9,50€</span>
-                    </div>
-                    <div class="item-description">Pan mollete, carne desliachada a la bbq, salsa de queso cheddar, cebolla frita y patatas fritas.</div>
-                </div>
-                <div class="menu-item" id="plato112044">
-                    <div class="item-header">
-                        <span class="item-name">Salsas: roquefort y pimienta</span>
-                        <span class="item-price">2,00€</span>
-                    </div>
-                </div>
+            <div class="item-description">
+              Nata, mozarella, champiñones, bacon y huevo.
             </div>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="section-title">Pizzas</h2>
-            
-            <div class="menu-note" style="margin-bottom: 30px;">
-                <p>Todas nuestras pizzas se elaboran con base de tomate, mozzarella y especias. 
-                    <span class="alergenos">
-                        <span title="Contiene Gluten">🌾</span>
-                        <span title="Contiene Lácteos">🥛</span>
-                    </span>
-                </p>
-                <p>
-                    <span id="plato407858">Opción masa sin gluten: +2,00€</span> | 
-                    <span id="plato112046">Suplemento ingrediente: +1,20€</span> | 
-                    <span id="plato112047">Suplemento Foie / Anchoas: +2,00€</span>
-                </p>
+          </div>
+          <div class="menu-item" id="plato545701">
+            <div class="item-header">
+              <span class="item-name">Guanciale</span>
+              <span class="item-price">12,00€</span>
             </div>
-
-            <div class="menu-grid">
-                <div class="menu-item" id="plato311594">
-                    <div class="item-header">
-                        <span class="item-name">Pan pizza</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato545702">
-                    <div class="item-header">
-                        <span class="item-name">Blanca</span>
-                        <span class="item-price">11,00€</span>
-                    </div>
-                    <div class="item-description">Nata, mozarella, champiñones, bacon y huevo.</div>
-                </div>
-                <div class="menu-item" id="plato545701">
-                    <div class="item-header">
-                        <span class="item-name">Guanciale</span>
-                        <span class="item-price">12,00€</span>
-                    </div>
-                    <div class="item-description">Nata, mozarella, cebolla caramelizada, guanciale y queso de cabra.</div>
-                </div>
-                <div class="menu-item" id="plato146754">
-                    <div class="item-header">
-                        <span class="item-name">Huracán Danna</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Salami, chorizo, jamón york.</div>
-                </div>
-                <div class="menu-item" id="plato146755">
-                    <div class="item-header">
-                        <span class="item-name">Pepperoni</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Pepperoni.</div>
-                </div>
-                <div class="menu-item" id="plato165217">
-                    <div class="item-header">
-                        <span class="item-name">Cañonero</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Bacon, pimiento verde, huevo y patatas fritas.</div>
-                </div>
-                <div class="menu-item" id="plato109364">
-                    <div class="item-header">
-                        <span class="item-name">Joan</span>
-                        <span class="item-price">9,50€</span>
-                    </div>
-                    <div class="item-description">Patatas fritas y hamburguesa.</div>
-                </div>
-                <div class="menu-item" id="plato109348">
-                    <div class="item-header">
-                        <span class="item-name">Atún</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Atún, aceitunas negras y cebolla.</div>
-                </div>
-                <div class="menu-item" id="plato109349">
-                    <div class="item-header">
-                        <span class="item-name">Barbacoa</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Bacon, carne boloñesa y salsa barbacoa.</div>
-                </div>
-                <div class="menu-item" id="plato109350">
-                    <div class="item-header">
-                        <span class="item-name">Boloñesa</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Carne picada.</div>
-                </div>
-                <div class="menu-item" id="plato109351">
-                    <div class="item-header">
-                        <span class="item-name">Blanco y negro</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Tocino ibérico, morcilla y salchicha.</div>
-                </div>
-                <div class="menu-item" id="plato109352">
-                    <div class="item-header">
-                        <span class="item-name">Carbonara</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Bacon, cebolla, champiñones y nata.</div>
-                </div>
-                <div class="menu-item" id="plato109353">
-                    <div class="item-header">
-                        <span class="item-name">Diablo</span>
-                        <span class="item-price">10,00€</span>
-                    </div>
-                    <div class="item-description">Chorizo picante y guindilla.</div>
-                </div>
-                <div class="menu-item" id="plato109354">
-                    <div class="item-header">
-                        <span class="item-name">Escalivada</span>
-                        <span class="item-price">12,00€</span>
-                    </div>
-                    <div class="item-description">Pimiento rojo, berenjena y queso de cabra.</div>
-                </div>
-                <div class="menu-item" id="plato109355">
-                    <div class="item-header">
-                        <span class="item-name">Frankfurt</span>
-                        <span class="item-price">9,00€</span>
-                    </div>
-                    <div class="item-description">Frankfurt.</div>
-                </div>
-                <div class="menu-item" id="plato109356">
-                    <div class="item-header">
-                        <span class="item-name">York</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                    <div class="item-description">York.</div>
-                </div>
-                <div class="menu-item" id="plato109357">
-                    <div class="item-header">
-                        <span class="item-name">Margarita</span>
-                        <span class="item-price">8,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109358">
-                    <div class="item-header">
-                        <span class="item-name">Tropical</span>
-                        <span class="item-price">9,50€</span>
-                    </div>
-                    <div class="item-description">York y piña.</div>
-                </div>
-                <div class="menu-item" id="plato109359">
-                    <div class="item-header">
-                        <span class="item-name">Vegetariana</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Cebolla, calabacín, champiñones, pimiento rojo y verde y alcachofa.</div>
-                </div>
-                <div class="menu-item" id="plato109360">
-                    <div class="item-header">
-                        <span class="item-name">4 Estaciones</span>
-                        <span class="item-price">11,00€</span>
-                    </div>
-                    <div class="item-description">Salami, york, pimiento rojo y verde, champiñones y cebolla.</div>
-                </div>
-                <div class="menu-item" id="plato109361">
-                    <div class="item-header">
-                        <span class="item-name">4 Quesos</span>
-                        <span class="item-price">10,50€</span>
-                    </div>
-                    <div class="item-description">Cheddar, cabra, roquefort y camembert.</div>
-                </div>
-                <div class="menu-item" id="plato109362">
-                    <div class="item-header">
-                        <span class="item-name">Griega</span>
-                        <span class="item-price">11,00€</span>
-                    </div>
-                    <div class="item-description">York, maíz, aceitunas negras, queso feta y salsa de yogurt.</div>
-                </div>
-                <div class="menu-item" id="plato109363">
-                    <div class="item-header">
-                        <span class="item-name">Serrano</span>
-                        <span class="item-price">11,00€</span>
-                    </div>
-                    <div class="item-description">Jamón serrano y huevo frito.</div>
-                </div>
-                <div class="menu-item" id="plato109365">
-                    <div class="item-header">
-                        <span class="item-name">Kebab</span>
-                        <span class="item-price">12,00€</span>
-                    </div>
-                    <div class="item-description">Kebab, patatas fritas y salsa blanca.</div>
-                </div>
-                <div class="menu-item" id="plato109366">
-                    <div class="item-header">
-                        <span class="item-name">Delicia</span>
-                        <span class="item-price">12,00€</span>
-                    </div>
-                    <div class="item-description">Cebolla caramelizada, foie, jamón serrano y pasas.</div>
-                </div>
+            <div class="item-description">
+              Nata, mozarella, cebolla caramelizada, guanciale y queso de cabra.
             </div>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="section-title">Pastas</h2>
-            <div class="menu-grid">
-                <div class="menu-item" id="plato263556">
-                    <div class="item-header">
-                        <span class="item-name">Linguini de rabo de toro</span>
-                        <span class="item-price">9,50€</span>
-                    </div>
-                    <div class="item-description">Salsa de champiñones y escamas de queso parmesano.</div>
-                </div>
-                <div class="menu-item" id="plato109368">
-                    <div class="item-header">
-                        <span class="item-name">Tallarines Diablo</span>
-                        <span class="item-price">9,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109369">
-                    <div class="item-header">
-                        <span class="item-name">Tallarines carbonara o boloñesa</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109370">
-                    <div class="item-header">
-                        <span class="item-name">Canelones de carne caseros (4u)</span>
-                        <span class="item-price">8,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109371">
-                    <div class="item-header">
-                        <span class="item-name">Lasaña de carne casera</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109372">
-                    <div class="item-header">
-                        <span class="item-name">Escalope boloñesa</span>
-                        <span class="item-price">10,00€</span>
-                    </div>
-                </div>
+          </div>
+          <div class="menu-item" id="plato146754">
+            <div class="item-header">
+              <span class="item-name">Huracán Danna</span>
+              <span class="item-price">10,50€</span>
             </div>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="section-title">Niños y niñas</h2>
-            <div class="menu-grid">
-                <div class="menu-item" id="plato109375">
-                    <div class="item-header">
-                        <span class="item-name">Sticks de pollo con patatas fritas</span>
-                        <span class="item-price">8,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109376">
-                    <div class="item-header">
-                        <span class="item-name">Nuggets de pollo (8u)</span>
-                        <span class="item-price">7,00€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109374">
-                    <div class="item-header">
-                        <span class="item-name">Hamburguesa mixta con queso Edam y patatas fritas</span>
-                        <span class="item-price">6,50€</span>
-                    </div>
-                </div>
+            <div class="item-description">Salami, chorizo, jamón york.</div>
+          </div>
+          <div class="menu-item" id="plato146755">
+            <div class="item-header">
+              <span class="item-name">Pepperoni</span>
+              <span class="item-price">10,50€</span>
             </div>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="section-title">Postres</h2>
-            <div class="menu-grid">
-                <div class="menu-item" id="plato109382">
-                    <div class="item-header">
-                        <span class="item-name">Tarta de queso</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109377">
-                    <div class="item-header">
-                        <span class="item-name">Tiramisú</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato629036">
-                    <div class="item-header">
-                        <span class="item-name">Panacota</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109379">
-                    <div class="item-header">
-                        <span class="item-name">Coulant de chocolate negro</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109378">
-                    <div class="item-header">
-                        <span class="item-name">Coulant de chocolate blanco sin gluten</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato629037">
-                    <div class="item-header">
-                        <span class="item-name">Tarta de galleta y chocolate</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109384">
-                    <div class="item-header">
-                        <span class="item-name">Contesa</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato109383">
-                    <div class="item-header">
-                        <span class="item-name">Tarta de Whisky</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
-                <div class="menu-item" id="plato629038">
-                    <div class="item-header">
-                        <span class="item-name">Bolas de helado</span>
-                        <span class="item-price">2,00€</span>
-                    </div>
-                    <div class="item-description">Limón, chocolate, fresa, pistacho, avellana, vainilla y café.</div>
-                </div>
-                <div class="menu-item" id="plato629039">
-                    <div class="item-header">
-                        <span class="item-name">Helados variados</span>
-                        <span class="item-price"></span>
-                    </div>
-                    <div class="item-description">Precio según el helado.</div>
-                </div>
-                <div class="menu-item" id="plato629035">
-                    <div class="item-header">
-                        <span class="item-name">Tiramisú</span>
-                        <span class="item-price">4,50€</span>
-                    </div>
-                </div>
+            <div class="item-description">Pepperoni.</div>
+          </div>
+          <div class="menu-item" id="plato165217">
+            <div class="item-header">
+              <span class="item-name">Cañonero</span>
+              <span class="item-price">10,50€</span>
             </div>
-        </section>
+            <div class="item-description">
+              Bacon, pimiento verde, huevo y patatas fritas.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109364">
+            <div class="item-header">
+              <span class="item-name">Joan</span>
+              <span class="item-price">9,50€</span>
+            </div>
+            <div class="item-description">Patatas fritas y hamburguesa.</div>
+          </div>
+          <div class="menu-item" id="plato109348">
+            <div class="item-header">
+              <span class="item-name">Atún</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Atún, aceitunas negras y cebolla.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109349">
+            <div class="item-header">
+              <span class="item-name">Barbacoa</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Bacon, carne boloñesa y salsa barbacoa.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109350">
+            <div class="item-header">
+              <span class="item-name">Boloñesa</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">Carne picada.</div>
+          </div>
+          <div class="menu-item" id="plato109351">
+            <div class="item-header">
+              <span class="item-name">Blanco y negro</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Tocino ibérico, morcilla y salchicha.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109352">
+            <div class="item-header">
+              <span class="item-name">Carbonara</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Bacon, cebolla, champiñones y nata.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109353">
+            <div class="item-header">
+              <span class="item-name">Diablo</span>
+              <span class="item-price">10,00€</span>
+            </div>
+            <div class="item-description">Chorizo picante y guindilla.</div>
+          </div>
+          <div class="menu-item" id="plato109354">
+            <div class="item-header">
+              <span class="item-name">Escalivada</span>
+              <span class="item-price">12,00€</span>
+            </div>
+            <div class="item-description">
+              Pimiento rojo, berenjena y queso de cabra.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109355">
+            <div class="item-header">
+              <span class="item-name">Frankfurt</span>
+              <span class="item-price">9,00€</span>
+            </div>
+            <div class="item-description">Frankfurt.</div>
+          </div>
+          <div class="menu-item" id="plato109356">
+            <div class="item-header">
+              <span class="item-name">York</span>
+              <span class="item-price">8,50€</span>
+            </div>
+            <div class="item-description">York.</div>
+          </div>
+          <div class="menu-item" id="plato109357">
+            <div class="item-header">
+              <span class="item-name">Margarita</span>
+              <span class="item-price">8,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109358">
+            <div class="item-header">
+              <span class="item-name">Tropical</span>
+              <span class="item-price">9,50€</span>
+            </div>
+            <div class="item-description">York y piña.</div>
+          </div>
+          <div class="menu-item" id="plato109359">
+            <div class="item-header">
+              <span class="item-name">Vegetariana</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Cebolla, calabacín, champiñones, pimiento rojo y verde y
+              alcachofa.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109360">
+            <div class="item-header">
+              <span class="item-name">4 Estaciones</span>
+              <span class="item-price">11,00€</span>
+            </div>
+            <div class="item-description">
+              Salami, york, pimiento rojo y verde, champiñones y cebolla.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109361">
+            <div class="item-header">
+              <span class="item-name">4 Quesos</span>
+              <span class="item-price">10,50€</span>
+            </div>
+            <div class="item-description">
+              Cheddar, cabra, roquefort y camembert.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109362">
+            <div class="item-header">
+              <span class="item-name">Griega</span>
+              <span class="item-price">11,00€</span>
+            </div>
+            <div class="item-description">
+              York, maíz, aceitunas negras, queso feta y salsa de yogurt.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109363">
+            <div class="item-header">
+              <span class="item-name">Serrano</span>
+              <span class="item-price">11,00€</span>
+            </div>
+            <div class="item-description">Jamón serrano y huevo frito.</div>
+          </div>
+          <div class="menu-item" id="plato109365">
+            <div class="item-header">
+              <span class="item-name">Kebab</span>
+              <span class="item-price">12,00€</span>
+            </div>
+            <div class="item-description">
+              Kebab, patatas fritas y salsa blanca.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109366">
+            <div class="item-header">
+              <span class="item-name">Delicia</span>
+              <span class="item-price">12,00€</span>
+            </div>
+            <div class="item-description">
+              Cebolla caramelizada, foie, jamón serrano y pasas.
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <footer>
-            <p>Pizzeria Vila de Càlig — Calle Tortosa, nº1, Càlig</p>
-        </footer>
+      <section class="menu-section">
+        <h2 class="section-title">Pastas</h2>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato263556">
+            <div class="item-header">
+              <span class="item-name">Linguini de rabo de toro</span>
+              <span class="item-price">9,50€</span>
+            </div>
+            <div class="item-description">
+              Salsa de champiñones y escamas de queso parmesano.
+            </div>
+          </div>
+          <div class="menu-item" id="plato109368">
+            <div class="item-header">
+              <span class="item-name">Tallarines Diablo</span>
+              <span class="item-price">9,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109369">
+            <div class="item-header">
+              <span class="item-name">Tallarines carbonara o boloñesa</span>
+              <span class="item-price">8,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109370">
+            <div class="item-header">
+              <span class="item-name">Canelones de carne caseros (4u)</span>
+              <span class="item-price">8,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109371">
+            <div class="item-header">
+              <span class="item-name">Lasaña de carne casera</span>
+              <span class="item-price">8,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109372">
+            <div class="item-header">
+              <span class="item-name">Escalope boloñesa</span>
+              <span class="item-price">10,00€</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h2 class="section-title">Niños y niñas</h2>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato109375">
+            <div class="item-header">
+              <span class="item-name">Sticks de pollo con patatas fritas</span>
+              <span class="item-price">8,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109376">
+            <div class="item-header">
+              <span class="item-name">Nuggets de pollo (8u)</span>
+              <span class="item-price">7,00€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109374">
+            <div class="item-header">
+              <span class="item-name"
+                >Hamburguesa mixta con queso Edam y patatas</span
+              >
+              <span class="item-price">6,50€</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h2 class="section-title">Postres</h2>
+        <div class="menu-grid">
+          <div class="menu-item" id="plato109382">
+            <div class="item-header">
+              <span class="item-name">Tarta de queso</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109377">
+            <div class="item-header">
+              <span class="item-name">Tiramisú</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato629036">
+            <div class="item-header">
+              <span class="item-name">Panacota</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109379">
+            <div class="item-header">
+              <span class="item-name">Coulant de chocolate negro</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109378">
+            <div class="item-header">
+              <span class="item-name"
+                >Coulant de chocolate blanco sin gluten</span
+              >
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato629037">
+            <div class="item-header">
+              <span class="item-name">Tarta de galleta y chocolate</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109384">
+            <div class="item-header">
+              <span class="item-name">Contesa</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato109383">
+            <div class="item-header">
+              <span class="item-name">Tarta de Whisky</span>
+              <span class="item-price">4,50€</span>
+            </div>
+          </div>
+          <div class="menu-item" id="plato629038">
+            <div class="item-header">
+              <span class="item-name">Bolas de helado</span>
+              <span class="item-price">2,00€</span>
+            </div>
+            <div class="item-description">
+              Limón, chocolate, fresa, pistacho, avellana, vainilla y café.
+            </div>
+          </div>
+          <div class="menu-item" id="plato629039">
+            <div class="item-header">
+              <span class="item-name">Helados variados</span>
+              <span class="item-price"></span>
+            </div>
+            <div class="item-description">Precio según el helado.</div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-content">
+          <h3>Pizzeria Vila de Càlig</h3>
+          <p>Calle Tortosa, nº1, Càlig</p>
+        </div>
+      </footer>
     </div>
-
-</body>
+  </body>
 </html>
