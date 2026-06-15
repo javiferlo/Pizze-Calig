@@ -1,11 +1,13 @@
 :root {
-  --bg-color: #f7f5f0;
+  --bg-color: #f3efe8;
   --surface-color: #ffffff;
   --text-main: #2b2b2b;
   --text-muted: #6b6b6b;
   --border-color: #e8e2d5;
   --accent-color: #c83222;
   --accent-gold: #c6a87c;
+  --allergen-ink: #111111;
+  --allergen-surface: rgba(255, 255, 255, 0.72);
   --max-width: 1000px;
 }
 
@@ -25,10 +27,10 @@ body {
 }
 
 .hero-header {
-  height: 350px;
+  min-height: 320px;
   background-image: url("https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
   background-size: cover;
-  background-position: center 60%;
+  background-position: center 58%;
   position: relative;
 }
 
@@ -48,24 +50,32 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 22px 18px;
+}
+
+.hero-logo {
+  width: clamp(120px, 34vw, 180px);
+  max-width: 72vw;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28));
 }
 
 .hero-overlay h1 {
   font-family: "Playfair Display", serif;
-  font-size: 3.2rem;
+  font-size: clamp(2rem, 8vw, 3.2rem);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
+  line-height: 1.02;
 }
 
 .hero-overlay p {
-  font-size: 1.1rem;
+  font-size: clamp(0.8rem, 3vw, 1.1rem);
   font-weight: 500;
   color: var(--accent-gold);
-  letter-spacing: 4px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
@@ -116,13 +126,58 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-main);
+  font-weight: 400;
+  color: var(--allergen-ink);
   background: transparent;
   padding: 0;
   border: none;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.6px;
+}
+
+.alergeno-icon {
+  font-size: 0.9em;
+  opacity: 0.78;
+}
+
+.alergeno-icon[data-allergen="🌾"],
+.alergenos span[data-allergen="🌾"] {
+  background: #efe5c7;
+}
+
+.alergeno-icon[data-allergen="🥛"],
+.alergenos span[data-allergen="🥛"] {
+  background: #e7e2da;
+}
+
+.alergeno-icon[data-allergen="🦐"],
+.alergenos span[data-allergen="🦐"] {
+  background: #f0d7d6;
+}
+
+.alergeno-icon[data-allergen="🐟"],
+.alergenos span[data-allergen="🐟"] {
+  background: #dce7f1;
+}
+
+.alergeno-icon[data-allergen="🌱"],
+.alergenos span[data-allergen="🌱"] {
+  background: #dde8d8;
+}
+
+.alergeno-icon[data-allergen="🥚"],
+.alergenos span[data-allergen="🥚"] {
+  background: #f2efe8;
+}
+
+.alergeno-icon[data-allergen="🦑"],
+.alergenos span[data-allergen="🦑"] {
+  background: #e3dbef;
+}
+
+.alergeno-icon[data-allergen="🟡"],
+.alergenos span[data-allergen="🟡"] {
+  background: #f3e6c5;
 }
 
 .inline-alergenos {
@@ -254,12 +309,27 @@ body {
 .menu-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 35px;
+  gap: 10px;
 }
 
 .menu-item {
   display: flex;
   flex-direction: column;
+}
+
+.item-photo {
+  margin: 6px 0 10px;
+  border-radius: 14px;
+  overflow: hidden;
+  /* box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08); */
+  /* border: 1px solid rgba(232, 226, 213, 0.85); */
+}
+
+.item-photo img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
 }
 
 .item-header {
@@ -314,21 +384,24 @@ body {
   vertical-align: middle;
 }
 
-.alergenos span {
+.alergenos span,
+.alergenos-trazas span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #fdfdfd;
-  width: 22px;
-  height: 22px;
+  background: var(--allergen-surface);
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--border-color);
-  font-size: 0.75rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(17, 17, 17, 0.5);
+  font-size: 0.7rem;
+  box-shadow: none;
+  color: var(--allergen-ink);
+  opacity: 0.78;
 }
 
 .alergenos-trazas span {
-  opacity: 0.6;
+  opacity: 0.78;
 }
 
 footer {
@@ -360,12 +433,32 @@ footer {
     column-gap: 60px;
   }
 
+  .item-photo img {
+    height: 210px;
+  }
+
   .hero-header {
-    height: 450px;
+    min-height: 450px;
+    background-position: center 60%;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .hero-logo {
+    width: 180px;
+    margin-bottom: 16px;
   }
 
   .hero-overlay h1 {
     font-size: 4.5rem;
+    line-height: 1.1;
+  }
+
+  .hero-overlay p {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
   }
 }
 
