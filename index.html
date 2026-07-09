@@ -15,7 +15,11 @@
   <body>
     <header class="hero-header">
       <div class="hero-overlay">
-        <img class="hero-logo" src="imagenes/Logo Pizzeria.png" alt="Pizzeria Vila de Càlig" />
+        <img
+          class="hero-logo"
+          src="imagenes/Logo Pizzeria.png"
+          alt="Pizzeria Vila de Càlig"
+        />
         <h1>Pizzeria Vila de Càlig</h1>
         <p>La Nostra Carta</p>
       </div>
@@ -23,10 +27,39 @@
 
     <main class="container" id="app"></main>
 
-    <script src="menu-data.js"></script>
+    <script src="xlsx.min.js"></script>
     <script>
-      const app = document.getElementById("app");
+      const config = {
+        iva: "IVA incluido en los precios.",
+        alergenos: "Información adicional de alérgenos preguntar al personal.",
+        nombre: "Pizzeria Vila de Càlig",
+        direccion: "Calle Tortosa, nº1, Càlig",
+      };
 
+      const legend = [
+        ["🌾", "Gluten"],
+        ["🥛", "Lácteos"],
+        ["🦐", "Crustáceos"],
+        ["🐟", "Pescado"],
+        ["🌱", "Soja"],
+        ["🥚", "Huevo"],
+        ["🦑", "Moluscos"],
+        ["🟡", "Mostaza"],
+      ];
+
+      const sectionNotes = {
+        Pizzas: {
+          text: "Todas nuestras pizzas se elaboran con base de tomate, mozzarella y especias.",
+          allergens: ["🌾", "🥛"],
+          supplements: [
+            { label: "Masa sin gluten", price: "+2,00€" },
+            { label: "Suplemento ingrediente", price: "+1,20€" },
+            { label: "Suplemento Foie / Anchoas", price: "+2,00€" },
+          ],
+        },
+      };
+
+      const app = document.getElementById("app");
       const escapeHtml = (value) =>
         String(value)
           .replaceAll("&", "&amp;")
@@ -35,6 +68,10 @@
           .replaceAll('"', "&quot;")
           .replaceAll("'", "&#39;");
 
+      function toggleSection(headerElement) {
+        headerElement.parentElement.classList.toggle("active");
+      }
+
       const renderAlergenos = (icons, className = "alergenos") =>
         `<div class="${className}">${icons
           .map((icon) => `<span>${escapeHtml(icon)}</span>`)
@@ -42,33 +79,47 @@
 
       const renderItem = (item) => {
         const parts = [
-          `<div class="menu-item" id="${escapeHtml(item.id)}">`,
+          `<div class="menu-item">`,
           `<div class="item-header">`,
-          `<span class="item-name">${escapeHtml(item.name)}</span>`,
-          `<span class="item-price">${escapeHtml(item.price || "")}</span>`,
+          `<span class="item-name">${escapeHtml(item.nombre)}</span>`,
+          `<span class="item-price">${escapeHtml(item.precio || "")}</span>`,
           `</div>`,
         ];
 
-        if (item.image) {
+        if (item.imagen) {
           parts.push(
-            `<div class="item-photo"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" loading="lazy" /></div>`,
+            `<div class="item-photo"><img src="${escapeHtml(item.imagen)}" alt="${escapeHtml(item.nombre)}" loading="lazy" /></div>`,
           );
         }
 
-        if (item.allergens?.length) {
-          parts.push(renderAlergenos(item.allergens));
+        const allergens = (item.alergenos || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter((s) => s);
+        if (allergens.length) {
+          parts.push(renderAlergenos(allergens));
         }
 
-        if (item.desc) {
-          parts.push(`<div class="item-description">${escapeHtml(item.desc)}`);
-
-          if (item.traces?.length) {
-            parts.push(renderAlergenos(item.traces, "alergenos-trazas"));
+        if (item.descripcion) {
+          parts.push(
+            `<div class="item-description">${escapeHtml(item.descripcion)}`,
+          );
+          const traces = (item.trazas || "")
+            .split(",")
+            .map((s) => s.trim())
+            .filter((s) => s);
+          if (traces.length) {
+            parts.push(renderAlergenos(traces, "alergenos-trazas"));
           }
-
           parts.push(`</div>`);
-        } else if (item.traces?.length) {
-          parts.push(renderAlergenos(item.traces, "alergenos-trazas"));
+        } else {
+          const traces = (item.trazas || "")
+            .split(",")
+            .map((s) => s.trim())
+            .filter((s) => s);
+          if (traces.length) {
+            parts.push(renderAlergenos(traces, "alergenos-trazas"));
+          }
         }
 
         parts.push(`</div>`);
@@ -79,18 +130,19 @@
         supplements
           .map(
             (supplement, index) =>
-              `${index ? '<span class="separator">|</span>' : ""}<span id="${escapeHtml(supplement.id)}">${escapeHtml(supplement.label)}: <strong>${escapeHtml(supplement.price)}</strong></span>`,
+              `${index ? '<span class="separator">|</span>' : ""}<span>${escapeHtml(supplement.label)}: <strong>${escapeHtml(supplement.price)}</strong></span>`,
           )
           .join("");
 
-      const renderSection = (section) => {
-        const note = section.note
-          ? `<div class="menu-note"><p>${escapeHtml(section.note.text)}${section.note.allergens?.length ? `<span class="alergenos inline-alergenos">${section.note.allergens.map((icon) => `<span>${escapeHtml(icon)}</span>`).join("")}</span>` : ""}</p>${section.supplements?.length ? `<div class="suplementos">${renderSupplements(section.supplements)}</div>` : ""}</div>`
+      const renderSection = (section, isFirst) => {
+        const sectionNote = sectionNotes[section.titulo];
+        const note = sectionNote
+          ? `<div class="menu-note"><p>${escapeHtml(sectionNote.text)}${sectionNote.allergens?.length ? `<span class="alergenos inline-alergenos">${sectionNote.allergens.map((icon) => `<span>${escapeHtml(icon)}</span>`).join("")}</span>` : ""}</p>${sectionNote.supplements?.length ? `<div class="suplementos">${renderSupplements(sectionNote.supplements)}</div>` : ""}</div>`
           : "";
 
-        return `<section class="menu-section${section.active ? " active" : ""}">
+        return `<section class="menu-section${isFirst ? " active" : ""}">
           <div class="section-header" onclick="toggleSection(this)">
-            <h2 class="section-title">${escapeHtml(section.title)}</h2>
+            <h2 class="section-title">${escapeHtml(section.titulo)}</h2>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -106,42 +158,68 @@
         </section>`;
       };
 
-      const renderPage = () => {
-        app.innerHTML = `
-          <div class="menu-note top-note">
-            <p id="plato117996">${escapeHtml(menuData.topNote.iva)}</p>
-            <p id="plato548598">${escapeHtml(menuData.topNote.alergenos)}</p>
-            <div class="leyenda-alergenos">
-              ${menuData.legend
-                .map(
-                  ([icon, label]) =>
-                    `<span><span class="alergeno-icon">${escapeHtml(icon)}</span> ${escapeHtml(label)}</span>`,
-                )
-                .join("")}
-            </div>
-          </div>
-          ${menuData.sections.map(renderSection).join("")}
-          <footer>
-            <div class="footer-content">
-              <h3>${escapeHtml(menuData.footer.name)}</h3>
-              <p>${escapeHtml(menuData.footer.address)}</p>
-            </div>
-          </footer>
-        `;
-      };
+      async function loadMenu() {
+        try {
+          const response = await fetch("carta.xlsx");
+          if (!response.ok) throw new Error("No se encontró carta.xlsx");
+          const arrayBuffer = await response.arrayBuffer();
+          const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
-      function toggleSection(headerElement) {
-        const currentSection = headerElement.parentElement;
-        const isActive = currentSection.classList.contains("active");
+          const sections = {};
+          let firstSheet = true;
 
-        if (!isActive) {
-          currentSection.classList.add("active");
-        } else {
-          currentSection.classList.remove("active");
+          workbook.SheetNames.forEach((sheetName) => {
+            const sheet = workbook.Sheets[sheetName];
+            const rows = XLSX.utils.sheet_to_json(sheet);
+
+            rows.forEach((row) => {
+              const sectionTitle = row.seccion;
+              if (!sectionTitle) return;
+
+              if (!sections[sectionTitle]) {
+                sections[sectionTitle] = {
+                  titulo: sectionTitle,
+                  items: [],
+                  isFirst: firstSheet,
+                };
+                firstSheet = false;
+              }
+              sections[sectionTitle].items.push(row);
+            });
+          });
+
+          const sectionsArray = Object.values(sections);
+          if (sectionsArray.length > 0 && !sectionsArray[0].isFirst) {
+            sectionsArray[0].isFirst = true;
+          }
+
+          app.innerHTML = `
+            <div class="menu-note top-note">
+              <p>${escapeHtml(config.iva)}</p>
+              <p>${escapeHtml(config.alergenos)}</p>
+              <div class="leyenda-alergenos">
+                ${legend
+                  .map(
+                    ([icon, label]) =>
+                      `<span><span class="alergeno-icon">${escapeHtml(icon)}</span> ${escapeHtml(label)}</span>`,
+                  )
+                  .join("")}
+              </div>
+            </div>
+            ${sectionsArray.map((section, idx) => renderSection(section, idx === 0)).join("")}
+            <footer>
+              <div class="footer-content">
+                <h3>${escapeHtml(config.nombre)}</h3>
+                <p>${escapeHtml(config.direccion)}</p>
+              </div>
+            </footer>
+          `;
+        } catch (error) {
+          app.innerHTML = `<p style="color: red; padding: 20px;">Error: ${error.message}</p>`;
         }
       }
 
-      renderPage();
+      loadMenu();
     </script>
   </body>
 </html>
