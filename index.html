@@ -33,7 +33,6 @@
         iva: "IVA incluido en los precios.",
         alergenos: "Información adicional de alérgenos preguntar al personal.",
         nombre: "Pizzeria Vila de Càlig",
-        direccion: "Calle Tortosa, nº1, Càlig",
       };
 
       const legend = [
@@ -207,10 +206,29 @@
               </div>
             </div>
             ${sectionsArray.map((section, idx) => renderSection(section, idx === 0)).join("")}
-            <footer>
+            <footer class="site-footer">
               <div class="footer-content">
-                <h3>${escapeHtml(config.nombre)}</h3>
-                <p>${escapeHtml(config.direccion)}</p>
+                <div class="footer-section">
+                  <h4>Ubicación y Contacto</h4>
+                  <p>
+                    <a href="https://maps.google.com/?q=Carrer+de+Tortosa,+1,+12589+Càlig,+Castellón" target="_blank" rel="noopener noreferrer">Carrer de Tortosa, núm. 1 — Càlig</a>
+                  </p>
+                  <p><a href="tel:+34964880172" class="phone-link">964 88 01 72</a></p>
+                </div>
+
+                <div class="footer-logo">
+                  <img src="imagenes/Logo Pizzeria.png" alt="Logo Pizzeria Vila de Càlig" loading="lazy" />
+                </div>
+
+                <div class="footer-section">
+                  <h4>Horario</h4>
+                  <p>Jue a Dom: 19:00–22:30 | Vie a Dom: 12:00–15:30</p>
+                  <p>Lunes, martes y miércoles: Cerrado</p>
+                </div>
+              </div>
+
+              <div class="footer-bottom">
+                <p>© ${new Date().getFullYear()} Pizzeria Vila de Càlig.</p>
               </div>
             </footer>
           `;
