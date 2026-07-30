@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="lang-switcher">
+      <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">
+        ES
+      </button>
+    </div>
+
     <header class="hero-header">
       <div class="hero-overlay">
         <img
@@ -26,39 +32,76 @@
     </header>
 
     <main class="container" id="app"></main>
-
     <script src="xlsx.min.js"></script>
     <script>
       const config = {
-        iva: "IVA incluido en los precios.",
-        alergenos: "Información adicional de alérgenos preguntar al personal.",
-        nombre: "Pizzeria Vila de Càlig",
+        es: {
+          iva: "IVA incluido en los precios.",
+          alergenos:
+            "Información adicional de alérgenos preguntar al personal.",
+          ubicacion: "Ubicación y Contacto",
+          horarioTitle: "Horario",
+          horario1: "Jue a Dom: 19:00–22:30 | Vie a Dom: 12:00–15:30",
+          horario2: "Lunes, martes y miércoles: Cerrado",
+        },
+        en: {
+          iva: "VAT included in all prices.",
+          alergenos:
+            "For additional allergen information, please ask the staff.",
+          ubicacion: "Location & Contact",
+          horarioTitle: "Opening Hours",
+          horario1: "Thu to Sun: 19:00–22:30 | Fri to Sun: 12:00–15:30",
+          horario2: "Monday, Tuesday, and Wednesday: Closed",
+        },
       };
 
-      const legend = [
-        ["🌾", "Gluten"],
-        ["🥛", "Lácteos"],
-        ["🦐", "Crustáceos"],
-        ["🐟", "Pescado"],
-        ["🌱", "Soja"],
-        ["🥚", "Huevo"],
-        ["🦑", "Moluscos"],
-        ["🟡", "Mostaza"],
-      ];
+      const legend = {
+        es: [
+          ["🌾", "Gluten"],
+          ["🥛", "Lácteos"],
+          ["🦐", "Crustáceos"],
+          ["🐟", "Pescado"],
+          ["🌱", "Soja"],
+          ["🥚", "Huevo"],
+          ["🦑", "Moluscos"],
+          ["🟡", "Mostaza"],
+        ],
+        en: [
+          ["🌾", "Gluten"],
+          ["🥛", "Dairy"],
+          ["🦐", "Crustaceans"],
+          ["🐟", "Fish"],
+          ["🌱", "Soy"],
+          ["🥚", "Egg"],
+          ["🦑", "Molluscs"],
+          ["🟡", "Mustard"],
+        ],
+      };
 
       const sectionNotes = {
         Pizzas: {
-          text: "Todas nuestras pizzas se elaboran con base de tomate, mozzarella y especias.",
+          text_es:
+            "Todas nuestras pizzas se elaboran con base de tomate, mozzarella y especias.",
+          text_en:
+            "All our pizzas are made with a tomato base, mozzarella, and spices.",
           allergens: ["🌾", "🥛"],
-          supplements: [
+          supplements_es: [
             { label: "Masa sin gluten", price: "+2,00€" },
             { label: "Suplemento ingrediente", price: "+1,20€" },
             { label: "Suplemento Foie / Anchoas", price: "+2,00€" },
+          ],
+          supplements_en: [
+            { label: "Gluten-free dough", price: "+2,00€" },
+            { label: "Extra ingredient", price: "+1,20€" },
+            { label: "Foie / Anchovies supplement", price: "+2,00€" },
           ],
         },
       };
 
       const app = document.getElementById("app");
+      let currentLang = "es";
+      let menuData = [];
+
       const escapeHtml = (value) =>
         String(value)
           .replaceAll("&", "&amp;")
@@ -67,95 +110,151 @@
           .replaceAll('"', "&quot;")
           .replaceAll("'", "&#39;");
 
+      const getArray = (str) =>
+        (str || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+      const t = (item, baseField) => {
+        if (currentLang === "en" && item[`${baseField}_en`])
+          return item[`${baseField}_en`];
+        return item[baseField] || item[`${baseField}_es`] || "";
+      };
+
       function toggleSection(headerElement) {
         headerElement.parentElement.classList.toggle("active");
       }
 
+      function toggleLang() {
+        currentLang = currentLang === "es" ? "en" : "es";
+        document.getElementById("lang-toggle").textContent =
+          currentLang.toUpperCase();
+        renderMenu();
+      }
+
       const renderAlergenos = (icons, className = "alergenos") =>
-        `<div class="${className}">${icons
-          .map((icon) => `<span>${escapeHtml(icon)}</span>`)
-          .join("")}</div>`;
-
-      const renderItem = (item) => {
-        const parts = [
-          `<div class="menu-item">`,
-          `<div class="item-header">`,
-          `<span class="item-name">${escapeHtml(item.nombre)}</span>`,
-          `<span class="item-price">${escapeHtml(item.precio || "")}</span>`,
-          `</div>`,
-        ];
-
-        if (item.imagen) {
-          parts.push(
-            `<div class="item-photo"><img src="${escapeHtml(item.imagen)}" alt="${escapeHtml(item.nombre)}" loading="lazy" /></div>`,
-          );
-        }
-
-        const allergens = (item.alergenos || "")
-          .split(",")
-          .map((s) => s.trim())
-          .filter((s) => s);
-        if (allergens.length) {
-          parts.push(renderAlergenos(allergens));
-        }
-
-        if (item.descripcion) {
-          parts.push(
-            `<div class="item-description">${escapeHtml(item.descripcion)}`,
-          );
-          const traces = (item.trazas || "")
-            .split(",")
-            .map((s) => s.trim())
-            .filter((s) => s);
-          if (traces.length) {
-            parts.push(renderAlergenos(traces, "alergenos-trazas"));
-          }
-          parts.push(`</div>`);
-        } else {
-          const traces = (item.trazas || "")
-            .split(",")
-            .map((s) => s.trim())
-            .filter((s) => s);
-          if (traces.length) {
-            parts.push(renderAlergenos(traces, "alergenos-trazas"));
-          }
-        }
-
-        parts.push(`</div>`);
-        return parts.join("");
-      };
+        icons.length
+          ? `<div class="${className}">${icons.map((icon) => `<span data-allergen="${escapeHtml(icon)}">${escapeHtml(icon)}</span>`).join("")}</div>`
+          : "";
 
       const renderSupplements = (supplements = []) =>
         supplements
           .map(
-            (supplement, index) =>
-              `${index ? '<span class="separator">|</span>' : ""}<span>${escapeHtml(supplement.label)}: <strong>${escapeHtml(supplement.price)}</strong></span>`,
+            (sup, idx) =>
+              `${idx ? '<span class="separator">|</span>' : ""}<span>${escapeHtml(sup.label)}: <strong>${escapeHtml(sup.price)}</strong></span>`,
           )
           .join("");
 
+      const renderItem = (item) => {
+        const nombre = t(item, "nombre");
+        const descripcion = t(item, "descripcion");
+        const allergens = getArray(item.alergenos);
+        const traces = getArray(item.trazas);
+
+        return `
+          <div class="menu-item">
+            <div class="item-header">
+              <span class="item-name">${escapeHtml(nombre)}</span>
+              <span class="item-price">${escapeHtml(item.precio || "")}</span>
+            </div>
+            ${item.imagen ? `<div class="item-photo"><img src="${escapeHtml(item.imagen)}" alt="${escapeHtml(nombre)}" loading="lazy" /></div>` : ""}
+            ${renderAlergenos(allergens)}
+            ${
+              descripcion || traces.length
+                ? `
+              <div class="item-description">
+                ${escapeHtml(descripcion)}
+                ${renderAlergenos(traces, "alergenos-trazas")}
+              </div>
+            `
+                : ""
+            }
+          </div>
+        `;
+      };
+
       const renderSection = (section, isFirst) => {
         const sectionNote = sectionNotes[section.titulo];
-        const note = sectionNote
-          ? `<div class="menu-note"><p>${escapeHtml(sectionNote.text)}${sectionNote.allergens?.length ? `<span class="alergenos inline-alergenos">${sectionNote.allergens.map((icon) => `<span>${escapeHtml(icon)}</span>`).join("")}</span>` : ""}</p>${sectionNote.supplements?.length ? `<div class="suplementos">${renderSupplements(sectionNote.supplements)}</div>` : ""}</div>`
+
+        let noteText = "";
+        let sups = [];
+        if (sectionNote) {
+          noteText =
+            currentLang === "en" && sectionNote.text_en
+              ? sectionNote.text_en
+              : sectionNote.text_es || sectionNote.text;
+          sups =
+            currentLang === "en" && sectionNote.supplements_en
+              ? sectionNote.supplements_en
+              : sectionNote.supplements_es || sectionNote.supplements;
+        }
+
+        const noteHtml = sectionNote
+          ? `
+          <div class="menu-note">
+            <p>${escapeHtml(noteText)}
+               ${sectionNote.allergens?.length ? `<span class="alergenos inline-alergenos">${sectionNote.allergens.map((icon) => `<span>${escapeHtml(icon)}</span>`).join("")}</span>` : ""}
+            </p>
+            ${sups?.length ? `<div class="suplementos">${renderSupplements(sups)}</div>` : ""}
+          </div>`
           : "";
 
-        return `<section class="menu-section${isFirst ? " active" : ""}">
-          <div class="section-header" onclick="toggleSection(this)">
-            <h2 class="section-title">${escapeHtml(section.titulo)}</h2>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-          <div class="section-content">
-            <div class="section-content-inner">
-              ${note}
-              <div class="menu-grid">
-                ${section.items.map(renderItem).join("")}
+        return `
+          <section class="menu-section${isFirst ? " active" : ""}">
+            <div class="section-header" onclick="toggleSection(this)">
+              <h2 class="section-title">${escapeHtml(section.titulo)}</h2>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="section-content">
+              <div class="section-content-inner">
+                ${noteHtml}
+                <div class="menu-grid">
+                  ${section.items.map(renderItem).join("")}
+                </div>
               </div>
             </div>
-          </div>
-        </section>`;
+          </section>`;
       };
+
+      function renderMenu() {
+        if (!menuData.length) return;
+
+        const currentConfig = config[currentLang];
+
+        app.innerHTML = `
+          <div class="menu-note top-note">
+            <p>${escapeHtml(currentConfig.iva)}</p>
+            <p>${escapeHtml(currentConfig.alergenos)}</p>
+            <div class="leyenda-alergenos">
+              ${legend[currentLang].map(([icon, label]) => `<span><span class="alergeno-icon" data-allergen="${escapeHtml(icon)}">${escapeHtml(icon)}</span> ${escapeHtml(label)}</span>`).join("")}
+            </div>
+          </div>
+          ${menuData.map((section, idx) => renderSection(section, idx === 0)).join("")}
+          <footer class="site-footer">
+            <div class="footer-content">
+              <div class="footer-section">
+                <h4>${escapeHtml(currentConfig.ubicacion)}</h4>
+                <p><a href="https://maps.google.com/?q=Carrer+de+Tortosa,+1,+12589+Càlig,+Castellón" target="_blank" rel="noopener noreferrer">Carrer de Tortosa, núm. 1 — Càlig</a></p>
+                <p><a href="tel:+34964880172" class="phone-link">964 88 01 72</a></p>
+              </div>
+              <div class="footer-logo">
+                <img src="imagenes/Logo Pizzeria.png" alt="Logo Pizzeria Vila de Càlig" loading="lazy" />
+              </div>
+              <div class="footer-section">
+                <h4>${escapeHtml(currentConfig.horarioTitle)}</h4>
+                <p>${escapeHtml(currentConfig.horario1)}</p>
+                <p>${escapeHtml(currentConfig.horario2)}</p>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <p>© ${new Date().getFullYear()} Pizzeria Vila de Càlig.</p>
+            </div>
+          </footer>
+        `;
+      }
 
       async function loadMenu() {
         try {
@@ -164,76 +263,33 @@
           const arrayBuffer = await response.arrayBuffer();
           const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
-          const sections = {};
+          const sectionsMap = {};
           let firstSheet = true;
 
           workbook.SheetNames.forEach((sheetName) => {
-            const sheet = workbook.Sheets[sheetName];
-            const rows = XLSX.utils.sheet_to_json(sheet);
-
+            const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
             rows.forEach((row) => {
               const sectionTitle = row.seccion;
               if (!sectionTitle) return;
 
-              if (!sections[sectionTitle]) {
-                sections[sectionTitle] = {
+              if (!sectionsMap[sectionTitle]) {
+                sectionsMap[sectionTitle] = {
                   titulo: sectionTitle,
                   items: [],
                   isFirst: firstSheet,
                 };
                 firstSheet = false;
               }
-              sections[sectionTitle].items.push(row);
+              sectionsMap[sectionTitle].items.push(row);
             });
           });
 
-          const sectionsArray = Object.values(sections);
-          if (sectionsArray.length > 0 && !sectionsArray[0].isFirst) {
-            sectionsArray[0].isFirst = true;
-          }
+          menuData = Object.values(sectionsMap);
+          if (menuData.length > 0) menuData[0].isFirst = true;
 
-          app.innerHTML = `
-            <div class="menu-note top-note">
-              <p>${escapeHtml(config.iva)}</p>
-              <p>${escapeHtml(config.alergenos)}</p>
-              <div class="leyenda-alergenos">
-                ${legend
-                  .map(
-                    ([icon, label]) =>
-                      `<span><span class="alergeno-icon">${escapeHtml(icon)}</span> ${escapeHtml(label)}</span>`,
-                  )
-                  .join("")}
-              </div>
-            </div>
-            ${sectionsArray.map((section, idx) => renderSection(section, idx === 0)).join("")}
-            <footer class="site-footer">
-              <div class="footer-content">
-                <div class="footer-section">
-                  <h4>Ubicación y Contacto</h4>
-                  <p>
-                    <a href="https://maps.google.com/?q=Carrer+de+Tortosa,+1,+12589+Càlig,+Castellón" target="_blank" rel="noopener noreferrer">Carrer de Tortosa, núm. 1 — Càlig</a>
-                  </p>
-                  <p><a href="tel:+34964880172" class="phone-link">964 88 01 72</a></p>
-                </div>
-
-                <div class="footer-logo">
-                  <img src="imagenes/Logo Pizzeria.png" alt="Logo Pizzeria Vila de Càlig" loading="lazy" />
-                </div>
-
-                <div class="footer-section">
-                  <h4>Horario</h4>
-                  <p>Jue a Dom: 19:00–22:30 | Vie a Dom: 12:00–15:30</p>
-                  <p>Lunes, martes y miércoles: Cerrado</p>
-                </div>
-              </div>
-
-              <div class="footer-bottom">
-                <p>© ${new Date().getFullYear()} Pizzeria Vila de Càlig.</p>
-              </div>
-            </footer>
-          `;
+          renderMenu();
         } catch (error) {
-          app.innerHTML = `<p style="color: red; padding: 20px;">Error: ${error.message}</p>`;
+          app.innerHTML = `<p style="color: red; padding: 20px;">Error al cargar la carta: ${error.message}</p>`;
         }
       }
 
